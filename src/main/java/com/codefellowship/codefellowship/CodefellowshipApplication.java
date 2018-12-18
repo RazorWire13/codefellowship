@@ -7,7 +7,12 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 public class CodefellowshipApplication {
 
 	public static void main(String[] args) {
+
 		SpringApplication.run(CodefellowshipApplication.class, args);
+		System.out.println("http://localhost:8080/");
+		System.out.println("http://localhost:8080/user-signup");
+
+
 	}
 
 }
