@@ -1,0 +1,20 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Album Index</title>
+    <div th:replace="~{common :: head}"></div>
+</head>
+<body>
+<h1>CodeFellowship Users</h1>
+<h2>Add an Album</h2>
+        <form action="/user-signup" method="POST">
+            <input placeholder="Username" name="username" />
+            <input placeholder="password" type="password" name="password" />
+            <input placeholder="First Name" name="firstName" />
+            <input placeholder="Last Name" name="lastName" />
+            <input placeholder="DOB" type="date" name="dateOfBirth" />
+            <input placeholder="Student Bio" name="bio" />
+            <input type="submit" />
+        </form>
+</body>
+</html>
