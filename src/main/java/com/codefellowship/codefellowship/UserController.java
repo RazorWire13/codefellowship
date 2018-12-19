@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -18,34 +19,41 @@ public class UserController {
     @Autowired
     private BCryptPasswordEncoder bCryptPasswordEncoder;
 
-    // Direct to splash page
+    // Display home page
     @RequestMapping(value="/", method= RequestMethod.GET)
-    public String index() {
+    public String displayHome() {
         return "index";
     }
 
-    // Database display of user data
-    @RequestMapping(value="/user-signup", method= RequestMethod.GET)
-    public String index2(Model model) {
-        //Display user info on screen
-        model.addAttribute("users", userRepo.findAll());
-        return "user-signup";
+    // Display signup page
+    @RequestMapping(value="/signup", method= RequestMethod.GET)
+    public String displaySignup() {
+        return "signup";
     }
 
-    // Take in user information and add application user to the database
-    @RequestMapping(value="/user-signup/", method=RequestMethod.POST)
-    public RedirectView createUser(
+    // Display user profile page
+    @RequestMapping(value="/myprofile/{userId}", method= RequestMethod.GET)
+    public String displayMyProfile(@PathVariable long userId, Model model) {
+        model.addAttribute("user", userRepo.findById(userId).get());
+        return "myprofile";
+    }
+
+    // Take in user information and add user to the database
+    @RequestMapping(value="/signup", method=RequestMethod.POST)
+    public RedirectView userSignup(
             @RequestParam String username,
             @RequestParam String password,
             @RequestParam String firstName,
             @RequestParam String lastName,
             @RequestParam String dateOfBirth,
             @RequestParam String bio) {
+
         // Season the password with some salt
         password = bCryptPasswordEncoder.encode(password);
-        ApplicationUser newUser = new ApplicationUser(username, password, firstName, lastName, dateOfBirth, bio);
+        AppUser newUser = new AppUser(username, password, firstName, lastName, dateOfBirth, bio);
         userRepo.save(newUser);
-        return new RedirectView("/");
+        // redirect user back to homepage
+        return new RedirectView("/myprofile/" + newUser.id);
     }
 
 }

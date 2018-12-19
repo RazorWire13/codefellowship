@@ -1,13 +1,13 @@
-<!DOCTYPE HTML>
+<!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
-    <title>CodeFellowship Home</title>
+    <title>User Profile</title>
     <div th:replace="~{common :: head}"></div>
 </head>
 <body>
-<h1>Code Fellows</h1>
-
-<p>Hello and Welcome to Code Fellows!</p>
+<h1>Account Profile</h1>
+<h2 th:text="${user.firstName} + ' ' + ${user.lastName}"></h2>
+<p th:text="${user.bio}"></p>
 
 <div th:replace="~{common :: nav}"></div>
 </body>
