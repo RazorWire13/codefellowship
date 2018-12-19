@@ -1,13 +1,13 @@
 <!DOCTYPE HTML>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
-    <title>Album Index</title>
+    <title>Account Sign-up</title>
     <div th:replace="~{common :: head}"></div>
 </head>
 <body>
-<h1>CodeFellowship Users</h1>
-<h2>Add an Album</h2>
-        <form action="/user-signup" method="POST">
+<h1>CodeFellowship Account Creation</h1>
+<h2>Please Fill in Your Information</h2>
+        <form action="/signup" method="POST">
             <input placeholder="Username" name="username" />
             <input placeholder="password" type="password" name="password" />
             <input placeholder="First Name" name="firstName" />
@@ -16,5 +16,7 @@
             <input placeholder="Student Bio" name="bio" />
             <input type="submit" />
         </form>
+
+<div th:replace="~{common :: nav}"></div>
 </body>
 </html>
