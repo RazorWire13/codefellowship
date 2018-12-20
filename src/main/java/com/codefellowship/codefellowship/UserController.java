@@ -31,11 +31,17 @@ public class UserController {
         return "signup";
     }
 
+    // Display login page
+    @RequestMapping(value="/login", method= RequestMethod.GET)
+    public String displayLogin() {
+        return "login";
+    }
+
     // Display user profile page
-    @RequestMapping(value="/myprofile/{userId}", method= RequestMethod.GET)
+    @RequestMapping(value="/profile/{userId}", method= RequestMethod.GET)
     public String displayMyProfile(@PathVariable long userId, Model model) {
         model.addAttribute("user", userRepo.findById(userId).get());
-        return "myprofile";
+        return "profile";
     }
 
     // Take in user information and add user to the database
@@ -53,7 +59,7 @@ public class UserController {
         AppUser newUser = new AppUser(username, password, firstName, lastName, dateOfBirth, bio);
         userRepo.save(newUser);
         // redirect user back to homepage
-        return new RedirectView("/myprofile/" + newUser.id);
+        return new RedirectView("/profile/" + newUser.id);
     }
 
 }

@@ -1,11 +1,11 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
-    <title>User Profile</title>
+    <title>My Profile</title>
     <div th:replace="~{common :: head}"></div>
 </head>
 <body>
-<h1>Account Profile</h1>
+<h1>My Profile</h1>
 <h2 th:text="${user.firstName} + ' ' + ${user.lastName}"></h2>
 <p th:text="'Username: ' + ${user.username}"></p>
 <p th:text="'DOB: ' + ${user.dateOfBirth}"></p>
