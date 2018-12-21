@@ -1,16 +1,21 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
-    <title>My Profile</title>
+    <title>User Profile</title>
     <div th:replace="~{common :: head}"></div>
 </head>
+<header>
+    <div th:replace="~{common :: nav}"></div>
+</header>
 <body>
-<h1>My Profile</h1>
-<h2 th:text="${user.firstName} + ' ' + ${user.lastName}"></h2>
-<p th:text="'Username: ' + ${user.username}"></p>
-<p th:text="'DOB: ' + ${user.dateOfBirth}"></p>
-<p th:text="'Student Bio: ' + ${user.bio}"></p>
 
-<div th:replace="~{common :: nav}"></div>
+    <h1>User Profile</h1>
+    <div class="info-container">
+        <img src="static/cf-crest.png" alt="CF Student Image Placeholder"/>
+        <h2 th:text="${user.firstName} + ' ' + ${user.lastName}"></h2>
+        <p th:text="'Username: ' + ${'@' + user.username}"></p>
+        <p th:text="'DOB: ' + ${user.dateOfBirth}"></p>
+        <p th:text="'Student Bio: ' + ${user.bio}"></p>
+    </div>
 </body>
 </html>

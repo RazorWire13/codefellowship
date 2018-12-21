@@ -4,9 +4,32 @@
     <title>Error Handling</title>
     <div th:replace="~{common :: head}"></div>
 </head>
+<header>
+    <div th:replace="~{common :: nav}"></div>
+</header>
 <body>
 
+<h1>Womp Womp - guess who sucks at coding???</h1>
+<div>
+    <table>
+    <tr>
+        <td>Path</td>
+        <td th:text="${path}"/>
+    </tr>
+    <tr>
+        <td>Error</td>
+        <td th:text="${error}"/>
+    </tr>
+    <tr>
+        <td>Status</td>
+        <td th:text="${status}"/>
+    </tr>
+    <tr>
+        <td>Message</td>
+        <td th:text="${message}"/>
+    </tr>
+    </table>
+</div>
 
-<div th:replace="~{common :: nav}"></div>
 </body>
 </html>

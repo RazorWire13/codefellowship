@@ -1,5 +1,6 @@
 package com.codefellowship.codefellowship.security;
 
+import com.codefellowship.codefellowship.UserDetailsServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -16,7 +17,6 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 @Configuration
 @EnableWebSecurity
 public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
-
 
     // We'll comment in these lines tomorrow, when we add a UserDetailsServiceImpl!
     @Autowired
@@ -39,16 +39,14 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 .cors().disable()
                 .csrf().disable()
                 .authorizeRequests()
-                    .antMatchers("/login", "/signup", "/", "/style.css").permitAll()
-
-            //                .antMatchers(HttpMethod.POST)
-                    .anyRequest().authenticated()
+                    .antMatchers("/login", "/signup", "/").permitAll()
+                .anyRequest().authenticated()
                 .and()
                     .formLogin()
                     .loginPage("/login")
                     .loginProcessingUrl("/perform_login")
                     .defaultSuccessUrl("/myprofile", true)
-                    .failureUrl("/login.html?error=true")
+                    .failureUrl("/login?error=true")
                 .and()
                     .logout()
                     .logoutUrl("/perform_logout")

@@ -1,16 +1,41 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
-    <title>User Profile</title>
+    <title>My Profile</title>
     <div th:replace="~{common :: head}"></div>
 </head>
+<header>
+    <div th:replace="~{common :: nav}"></div>
+</header>
 <body>
-<h1>Account Profile</h1>
-<h2 th:text="${user.firstName} + ' ' + ${user.lastName}"></h2>
-<p th:text="'Username: ' + ${user.username}"></p>
-<p th:text="'DOB: ' + ${user.dateOfBirth}"></p>
-<p th:text="'Student Bio: ' + ${user.bio}"></p>
 
-<div th:replace="~{common :: nav}"></div>
+    <h1>My Profile</h1>
+    <div class="info-container">
+        <img src="static/cf-crest.png" alt="CF Student Image Placeholder"/>
+        <table>
+            <tr>
+                <td>Name</td>
+                <td th:text="${user.firstName} + ' ' + ${user.lastName}"/>
+            </tr>
+            <tr>
+            <tr>
+                <td>Name</td>
+                <td th:text="'Username: ' + ${user.username}"/>
+            </tr>
+            <tr>
+            <tr>
+                <td>Name</td>
+                <td th:text="'DOB: ' + ${user.dateOfBirth}"/>
+            </tr>
+            <tr> <tr>
+            <td>Name</td>
+            <td th:text="'Student Bio: ' + ${user.bio}"/>
+        </tr>
+            <tr>
+        <h2 th:text="${user.firstName} + ' ' + ${user.lastName}"></h2>
+        <p th:text="'Username: ' + ${user.username}"></p>
+        <p th:text="'DOB: ' + ${user.dateOfBirth}"></p>
+        <p th:text="'Student Bio: ' + ${user.bio}"></p>
+    </div>
 </body>
 </html>
