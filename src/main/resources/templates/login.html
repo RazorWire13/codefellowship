@@ -1,12 +1,21 @@
-<!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
 <head>
     <title>Login Page</title>
     <div th:replace="~{common :: head}"></div>
 </head>
+<header>
+    <div th:replace="~{common :: nav}"></div>
+</header>
 <body>
 
-<div th:replace="~{common :: nav}"></div>
-<div th:replace="~{common :: bootstrap-css}"></div>
+<h1>Login</h1>
+<h2>Please Log In to Continue</h2>
+<form action="/perform_login" method="POST">
+    <input placeholder="input username" type="text" name="username" />
+    <input placeholder="input password" type="password" name="password" />
+    <input type="submit" />
+</form>
+
 </body>
 </html>
