@@ -9,22 +9,23 @@
 </header>
 <body>
 
-    <h1>User Profile</h1>
-    <div class="info-container">
-        <img src="cf-crest.png" alt="CF Student Image Placeholder"/>
-        <table>
-            <tr>
-                <td>Name:</td>
-                <td th:text="${user.firstName} + ' ' + ${user.lastName}"/>
-            </tr>
-            <tr>
-            <tr>
-                <td>DOB:</td>
-                <td th:text="${user.dateOfBirth}"/>
-            </tr>
-            <tr>
-                <td>Student Bio:</td>
-                <td th:text="${user.bio}"/>
-            </tr>
+<h1>User Profile</h1>
+<div class="info-container">
+    <img src="/cf-crest.png" alt="CF Student Image Placeholder"/>
+    <table>
+        <tr>
+            <td>Name:</td>
+            <td th:text="${user.firstName} + ' ' + ${user.lastName}"/>
+        </tr>
+        <tr>
+        <tr>
+            <td>DOB:</td>
+            <td th:text="${user.dateOfBirth}"/>
+        </tr>
+        <tr>
+            <td>Student Bio:</td>
+            <td th:text="${user.bio}"/>
+        </tr>
+</div>
 </body>
 </html>
