@@ -51,10 +51,11 @@ public class UserController {
     }
 
     // Display user 'myprofile' page
-    @RequestMapping(value="/myprofile/{userId}", method= RequestMethod.GET)
+    @RequestMapping(value="/myprofile", method= RequestMethod.GET)
     public String displayMyProfile(Principal p, Model model) {
         System.out.println(p);
         AppUser current = (AppUser)((UsernamePasswordAuthenticationToken) p).getPrincipal();
+        model.addAttribute("user", current);
         return "myprofile";
     }
 
@@ -80,6 +81,5 @@ public class UserController {
         // redirect user back to their profile once created
         return new RedirectView("/myprofile");
     }
-
 }
 
