@@ -23,6 +23,9 @@ public class UserController {
     private UserRepository userRepo;
 
     @Autowired
+    private PostRepository postRepo;
+
+    @Autowired
     private BCryptPasswordEncoder bCryptPasswordEncoder;
 
     // Display home page
@@ -45,7 +48,7 @@ public class UserController {
 
     // Display user profile page
     @RequestMapping(value="/profile/{userId}", method= RequestMethod.GET)
-    public String displayMyProfile(@PathVariable long userId, Model model) {
+    public String displayProfile(@PathVariable long userId, Model model) {
         model.addAttribute("user", userRepo.findById(userId).get());
         return "profile";
     }
@@ -81,5 +84,6 @@ public class UserController {
         // redirect user back to their profile once created
         return new RedirectView("/myprofile");
     }
+
 }
 

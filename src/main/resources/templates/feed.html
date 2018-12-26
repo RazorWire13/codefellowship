@@ -1,0 +1,18 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Comment Feed</title>
+    <div th:replace="~{common :: head}"></div>
+</head>
+<header>
+    <div th:replace="~{common :: nav}"></div>
+</header>
+<body>
+    <ul>
+        <li th:each="post : ${user.posts}">
+            <p th:text="${'Posted by: ' + post.appUser.username + ' on ' + post.createdOn}"></p>
+            <p th:text="${post.comment}"></p>
+        </li>
+    </ul>
+</body>
+</html>
