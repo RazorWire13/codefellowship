@@ -1,0 +1,31 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Posts</title>
+    <div th:replace="~{common :: head}"></div>
+</head>
+<header>
+    <div th:replace="~{common :: nav}"></div>
+</header>
+<body>
+
+<h1>User Posts</h1>
+<h2>Fill in a comment</h2>
+<form th:action="${'/users/' + user.id + '/post'}" method="POST">
+    <input placeholder="--> post here <--" type="text" name="comment" />
+    <input type="submit" />
+</form>
+
+<table>
+    <tr>
+        <th colspan="1">Created on: </th>
+        <th colspan="1">Post: </th>
+    </tr>
+    <tr th:each="post : ${user.posts}">
+        <td th:text="${post.createdOn}"></td>
+        <td th:text="${post.comment}"></td>
+    </tr>
+</table>
+
+</body>
+</html>
