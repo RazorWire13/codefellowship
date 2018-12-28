@@ -23,8 +23,8 @@ public class PostController {
     @RequestMapping(value="/allposts", method= RequestMethod.GET)
     public String displayPosts(Principal p, Model model) {
         System.out.println(p);
-        Post current = (Post)((UsernamePasswordAuthenticationToken) p).getPrincipal();
-        model.addAttribute("user", current);
+//        Post current = (Post)((UsernamePasswordAuthenticationToken) p).getPrincipal();
+        model.addAttribute("user", ((UsernamePasswordAuthenticationToken) p).getPrincipal());
         return "posts";
     }
 
